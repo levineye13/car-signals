@@ -10,6 +10,23 @@ module.exports = {
     filename: 'main.js',
     publicPath: '',
   },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: '/node_modules/',
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: '/node_modules/',
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
+  },
   devServer: {
     static: distDirectory,
     compress: true,

@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const distDirectory = path.resolve(__dirname, './dist');
 
@@ -24,6 +25,20 @@ module.exports = {
         use: 'babel-loader',
         exclude: '/node_modules/',
       },
+      {
+        test: /\.(c|sa|sc)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+            },
+          },
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
     ],
   },
   resolve: {
@@ -37,9 +52,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: '',
+      title: 'Сигналы',
       template: path.resolve(__dirname, './src/pages/index.html'),
     }),
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
   ],
 };

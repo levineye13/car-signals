@@ -1,0 +1,10 @@
+@font-face {
+  font: {
+    family: 'JetBrains Mono';
+    weight: 500;
+    style: normal;
+  }
+  src: local('JetBrains Mono Medium'), local('JetBrainsMono-Medium'),
+    url('/src/vendor/fonts/JetBrainsMono-Medium.woff2') format('woff2'),
+    url('/src/vendor/fonts/JetBrainsMono-Medium.woff') format('woff');
+}

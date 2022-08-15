@@ -1,0 +1,20 @@
+@mixin reset-list($margin: 0, $padding: 0, $list-style: none) {
+  margin: $margin;
+  padding: $padding;
+  list-style: $list-style;
+}
+
+@mixin set-indents($margin: 0, $padding: 0, $border: 0) {
+  margin: $margin;
+  padding: $padding;
+  border: $border;
+}
+
+@mixin set-font($size: initial, $weight: 500, $style: normal) {
+  font: {
+    family: 'JetBrains Mono', Arial, Helvetica, sans-serif;
+    size: $size;
+    weight: $weight;
+    style: $style;
+  }
+}

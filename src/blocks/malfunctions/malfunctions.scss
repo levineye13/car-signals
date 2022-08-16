@@ -1,0 +1,121 @@
+.malfunctions {
+  position: relative;
+  color: #fff;
+  cursor: pointer;
+
+  &__figure {
+    box-sizing: border-box;
+    @include set-indents(0, 4px, 2px solid #000);
+    width: 280px;
+    min-height: 35px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__description {
+    margin: 0;
+  }
+
+  & ul {
+    box-sizing: border-box;
+    @include reset-list;
+    background-color: #000;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  & li {
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+    cursor: pointer;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  & > ul {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: 0 0 4px 4px;
+    transition: visibility 0.3s, opacity 0.3s;
+
+    & > li {
+      width: 100%;
+      position: relative;
+      padding: 7px 10px;
+      font-size: 20px;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+        background-color: green;
+      }
+
+      &:nth-child(2)::before {
+        background-color: red;
+      }
+
+      &:nth-child(3)::before {
+        background-color: yellow;
+      }
+
+      & > ul {
+        background-color: #000;
+      }
+
+      & > ul {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        border-radius: 0 4px 4px 4px;
+
+        & > li {
+          width: 100%;
+
+          & > label {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            padding: 5px;
+            cursor: pointer;
+
+            & > input {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &:hover > ul {
+    visibility: visible;
+    opacity: 0.8;
+
+    & li {
+      & > ul > li:hover {
+        opacity: 0.6;
+      }
+
+      &:hover > ul {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}

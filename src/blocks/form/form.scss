@@ -18,10 +18,8 @@
     align-items: flex-start;
   }
 
-  &__input {
-    @include set-indents(0, 4px, 2px solid #000);
-    font-family: inherit;
-    border-radius: 5px;
+  &__description {
+    margin: 0;
   }
 
   &__add-signal,
@@ -29,7 +27,7 @@
     @include set-indents(25px 0px 0px, 5px 7px, 2px solid #000);
     font-size: 20px;
     cursor: pointer;
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 7px;
     color: #000;
     transition: background-color 0.3s, color 0.3s;
@@ -47,10 +45,6 @@
   &__malfunctions {
     display: flex;
     flex-direction: column;
-  }
-
-  &__description {
-    margin: 0;
   }
 
   &__list {

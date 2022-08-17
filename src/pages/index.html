@@ -12,29 +12,44 @@
         <img src="#" alt="Картинка сигнала" class="page__img" />
       </div>
       <form action="#" class="form page__form" name="signalsForm">
-        <fieldset class="form__select">
-          <legend class="form__description">Список сиглалов:</legend>
-          <div class="form__wrapper">
-            <ul class="list">
-              <li class="list__item">
-                <ul class="list__sublist"></ul>
-              </li>
-              <li class="list__item">
-                <ul class="list__sublist"></ul>
-              </li>
-              <li class="list__item">
-                <ul class="list__sublist"></ul>
-              </li>
-            </ul>
+        <fieldset class="form__fieldset">
+          <label class="form__label">Список сиглалов:&ensp;</label>
+          <div class="form__col">
+            <div class="malfunctions">
+              <figure class="malfunctions__figure">
+                <img class="malfunctions__img" />
+                <figcaption class="malfunctions__description"></figcaption>
+              </figure>
+              <ul class="malfunctions__list">
+                <li class="malfunctions__item">
+                  Зеленые индикаторы
+                  <ul class="malfunctions__sublist"></ul>
+                </li>
+                <li class="malfunctions__item">
+                  Красные индикаторы
+                  <ul class="malfunctions__sublist"></ul>
+                </li>
+                <li class="malfunctions__item">
+                  Желтые индикаторы
+                  <ul class="malfunctions__sublist"></ul>
+                </li>
+              </ul>
+            </div>
             <button class="form__add-signal" type="button">Добавить</button>
             <button class="form__submit" type="submit">Отправить</button>
           </div>
         </fieldset>
-        <fieldset class="form__malfunctions">
-          <legend class="form__description">Список неисправностей</legend>
-          <ul class="form__malfunctions-list"></ul>
-        </fieldset>
+        <div class="form__malfunctions">
+          <p class="form__description">Список неисправностей</p>
+          <ol class="form__list"></ol>
+        </div>
       </form>
     </div>
+    <template id="template">
+      <figure class="malfunction">
+        <img class="malfunction__img" />
+        <figcaption class="malfunction__description"></figcaption>
+      </figure>
+    </template>
   </body>
 </html>

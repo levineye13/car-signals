@@ -5,31 +5,38 @@
 
   &__figure {
     box-sizing: border-box;
-    @include set-indents(0, 4px, 2px solid #000);
+    @include set-indents(0, 10px, 2px solid #000);
     width: 280px;
     min-height: 35px;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+  }
+
+  &__img {
+    max-width: 50px;
+    height: auto;
+    margin-right: 10px;
   }
 
   &__description {
     margin: 0;
+    color: #000;
+    font-size: 18px;
   }
 
   & ul {
     box-sizing: border-box;
     @include reset-list;
-    background-color: #000;
+    background-color: rgba($color: #000, $alpha: 0.8);
     visibility: hidden;
-    opacity: 0;
   }
 
   & li {
     box-sizing: border-box;
-    transition: background-color 0.3s;
+    transition: color 0.3s;
     cursor: pointer;
 
     &:not(:last-of-type) {
@@ -43,7 +50,6 @@
     top: 100%;
     left: 0;
     border-radius: 0 0 4px 4px;
-    transition: visibility 0.3s, opacity 0.3s;
 
     & > li {
       width: 100%;
@@ -72,10 +78,6 @@
       }
 
       & > ul {
-        background-color: #000;
-      }
-
-      & > ul {
         width: 100%;
         position: absolute;
         top: 0;
@@ -93,10 +95,6 @@
             width: 100%;
             padding: 5px;
             cursor: pointer;
-
-            & > input {
-              display: none;
-            }
           }
         }
       }
@@ -105,16 +103,23 @@
 
   &:hover > ul {
     visibility: visible;
-    opacity: 0.8;
 
-    & li {
-      & > ul > li:hover {
-        opacity: 0.6;
+    & > li {
+      & > ul {
+        color: #fff;
+        opacity: 1;
       }
 
-      &:hover > ul {
-        visibility: visible;
-        opacity: 1;
+      &:hover {
+        color: rgba($color: #fff, $alpha: 0.6);
+
+        & > ul {
+          visibility: visible;
+
+          & > li:hover {
+            color: rgba($color: #fff, $alpha: 0.6);
+          }
+        }
       }
     }
   }

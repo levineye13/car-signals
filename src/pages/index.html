@@ -6,44 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Сигналы</title>
   </head>
-  <body>
-    <div class="page">
+  <body class="page">
+    <div class="page__wrapper">
       <div class="page__img-container">
         <img src="#" alt="Картинка сигнала" class="page__img" />
       </div>
-      <form action="#" class="form page__form" name="signalsForm">
-        <fieldset class="form__fieldset">
-          <label class="form__label">Список сиглалов:&ensp;</label>
-          <div class="form__col">
-            <div class="malfunctions">
-              <figure class="malfunctions__figure">
-                <img class="malfunctions__img" />
-                <figcaption class="malfunctions__description"></figcaption>
-              </figure>
-              <ul class="malfunctions__list">
-                <li class="malfunctions__item">
-                  Зеленые индикаторы
-                  <ul class="malfunctions__sublist"></ul>
-                </li>
-                <li class="malfunctions__item">
-                  Красные индикаторы
-                  <ul class="malfunctions__sublist"></ul>
-                </li>
-                <li class="malfunctions__item">
-                  Желтые индикаторы
-                  <ul class="malfunctions__sublist"></ul>
-                </li>
-              </ul>
+      <div class="page__content">
+        <form action="#" class="form" name="signalsForm">
+          <fieldset class="form__fieldset">
+            <label class="form__label">Список сиглалов:&ensp;</label>
+            <div class="form__col">
+              <div class="malfunctions">
+                <figure class="malfunctions__figure">
+                  <img class="malfunctions__img" />
+                  <figcaption class="malfunctions__description"></figcaption>
+                </figure>
+                <ul class="malfunctions__list">
+                  <li class="malfunctions__item">
+                    Зеленые индикаторы
+                    <ul class="malfunctions__sublist"></ul>
+                  </li>
+                  <li class="malfunctions__item">
+                    Красные индикаторы
+                    <ul class="malfunctions__sublist"></ul>
+                  </li>
+                  <li class="malfunctions__item">
+                    Желтые индикаторы
+                    <ul class="malfunctions__sublist"></ul>
+                  </li>
+                </ul>
+              </div>
+              <button class="form__add-signal" type="button">Добавить</button>
+              <button class="form__submit" type="submit">Отправить</button>
             </div>
-            <button class="form__add-signal" type="button">Добавить</button>
-            <button class="form__submit" type="submit">Отправить</button>
-          </div>
-        </fieldset>
-        <div class="form__malfunctions">
-          <p class="form__description">Список неисправностей</p>
-          <ol class="form__list"></ol>
+          </fieldset>
+        </form>
+        <div class="page__malfunctions">
+          <p class="page__description">Список неисправностей</p>
+          <ol class="page__list"></ol>
         </div>
-      </form>
+      </div>
     </div>
     <template id="template">
       <figure class="malfunction">

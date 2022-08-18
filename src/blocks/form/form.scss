@@ -1,25 +1,35 @@
 .form {
   @include set-font(22px);
-  max-width: 1024px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+
+  &__label {
+    @media screen and (max-width: 960px) {
+      margin-bottom: 10px;
+    }
+  }
 
   &__fieldset {
     @include set-indents;
     display: flex;
     flex-direction: row;
+
+    @media screen and (min-width: 721px) and (max-width: 960px) {
+      flex-direction: column;
+    }
+
+    @media screen and (max-width: 720px) {
+      margin-bottom: 20px;
+    }
+
+    @media screen and (max-width: 540px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__col {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  &__description {
-    margin: 0;
   }
 
   &__add-signal,
@@ -36,45 +46,13 @@
       background-color: rgba($color: #000, $alpha: 0.8);
       color: #fff;
     }
+
+    @media screen and (max-width: 720px) {
+      width: 100%;
+    }
   }
 
   &__submit {
     text-transform: uppercase;
-  }
-
-  &__malfunctions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &__list {
-    @include reset-list;
-    box-sizing: border-box;
-    width: 350px;
-    min-height: 250px;
-    margin-top: 10px;
-    counter-reset: form__item 0;
-    padding: 12px;
-    border: 2px solid #000;
-    border-radius: 5px;
-  }
-
-  &__item {
-    counter-increment: form__item 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #000;
-
-    &::before {
-      content: ' ' counter(form__item) ') ';
-    }
-
-    &:not(:first-of-type) {
-      margin-top: 12px;
-    }
   }
 }

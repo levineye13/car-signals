@@ -18,6 +18,10 @@ const submitList = page.querySelector('.page__list') as HTMLOListElement;
 const addSignalButton = formElement.querySelector(
   '.form__add-signal'
 ) as HTMLButtonElement;
+const menuList = formElement.querySelector(
+  '.malfunctions__list'
+) as HTMLUListElement;
+const menuItems = menuList.querySelectorAll('.malfunctions__item');
 
 const createMalfunctionElement = (
   template: HTMLTemplateElement,
@@ -76,4 +80,16 @@ formElement.addEventListener('submit', (e: Event) => {
   e.preventDefault();
 
   submitList.innerHTML = '';
+});
+
+menuItems.forEach((item: Element) => {
+  item.addEventListener('click', () => {
+    item.classList.toggle('malfunctions__item_active');
+
+    if (item.classList.contains('malfunctions__item_active')) {
+      menuList.classList.add('malfunctions__list_active');
+    } else {
+      menuList.classList.remove('malfunctions__list_active');
+    }
+  });
 });

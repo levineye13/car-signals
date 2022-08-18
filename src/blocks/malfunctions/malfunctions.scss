@@ -84,6 +84,11 @@
         left: 100%;
         border-radius: 0 4px 4px 4px;
 
+        @media screen and (max-width: 720px) {
+          top: 100%;
+          left: 0;
+        }
+
         & > li {
           width: 100%;
 
@@ -101,6 +106,10 @@
     }
   }
 
+  & .malfunctions__item_active > ul {
+    visibility: visible;
+  }
+
   &:hover > ul {
     visibility: visible;
 
@@ -108,13 +117,16 @@
       & > ul {
         color: #fff;
         opacity: 1;
+        z-index: 10;
       }
 
       &:hover {
         color: rgba($color: #fff, $alpha: 0.6);
 
         & > ul {
-          visibility: visible;
+          @media screen and (max-width: 720px) {
+            background-color: rgba($color: #000, $alpha: 1);
+          }
 
           & > li:hover {
             color: rgba($color: #fff, $alpha: 0.6);

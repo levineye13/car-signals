@@ -14,7 +14,7 @@ const template = document.body.querySelector(
 
 const formElement = page.querySelector('.form') as HTMLFormElement;
 const lists = page.querySelectorAll('.malfunctions__sublist');
-const submitList = formElement.querySelector('.form__list') as HTMLOListElement;
+const submitList = page.querySelector('.page__list') as HTMLOListElement;
 const addSignalButton = formElement.querySelector(
   '.form__add-signal'
 ) as HTMLButtonElement;
@@ -63,7 +63,7 @@ addSignalButton.addEventListener('click', () => {
   );
 
   const item = document.createElement('li');
-  item.className = 'form__item';
+  item.className = 'page__item';
   item.append(figureElement);
 
   submitList.insertAdjacentElement('beforeend', item);

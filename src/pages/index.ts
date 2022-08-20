@@ -1,5 +1,6 @@
 import './index.scss';
 import { images } from './../images';
+import Malfunction from '../components/malfunction';
 
 const page = document.querySelector('.page') as HTMLDivElement;
 const imageElement = page.querySelector(
@@ -23,52 +24,39 @@ const menuList = formElement.querySelector(
 ) as HTMLUListElement;
 const menuItems = menuList.querySelectorAll('.malfunctions__item');
 
-const createMalfunctionElement = (
-  template: HTMLTemplateElement,
-  src: string,
-  alt: string
-): HTMLElement => {
-  const figureElement = template.content.cloneNode(true)
-    .childNodes[0] as HTMLElement;
-
-  const img = figureElement.children[0] as HTMLImageElement;
-  img.src = src;
-  img.alt = alt;
-
-  figureElement.children[1].textContent = alt;
-
-  return figureElement;
-};
-
 images.forEach((image) => {
-  const figureElement = createMalfunctionElement(
-    template,
+  const malfunction = new Malfunction(
+    '#template',
     image.src,
     image.description
   );
 
-  figureElement.addEventListener('click', (): void => {
+  const malfunctionElement = malfunction.getView();
+
+  malfunctionElement.addEventListener('click', (): void => {
     imageElement.src = image.src;
     imageElement.alt = image.description;
     description.textContent = image.description;
   });
 
   const item = document.createElement('li');
-  item.append(figureElement);
+  item.append(malfunctionElement);
 
   lists[image.group].insertAdjacentElement('beforeend', item);
 });
 
 addSignalButton.addEventListener('click', () => {
-  const figureElement = createMalfunctionElement(
-    template,
+  const malfunction = new Malfunction(
+    '#template',
     imageElement.src,
     imageElement.alt
   );
 
+  const malfunctionElement = malfunction.getView();
+
   const item = document.createElement('li');
   item.className = 'page__item';
-  item.append(figureElement);
+  item.append(malfunctionElement);
 
   submitList.insertAdjacentElement('beforeend', item);
   imageElement.src = '';

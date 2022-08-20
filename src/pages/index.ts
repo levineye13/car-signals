@@ -1,28 +1,16 @@
 import './index.scss';
 import { images } from './../images';
 import Malfunction from '../components/malfunction';
-
-const page = document.querySelector('.page') as HTMLDivElement;
-const imageElement = page.querySelector(
-  '.malfunctions__img'
-) as HTMLImageElement;
-const description: HTMLElement = page.querySelector(
-  '.malfunctions__description'
-) as HTMLElement;
-const template = document.body.querySelector(
-  '#template'
-) as HTMLTemplateElement;
-
-const formElement = page.querySelector('.form') as HTMLFormElement;
-const lists = page.querySelectorAll('.malfunctions__sublist');
-const submitList = page.querySelector('.page__list') as HTMLOListElement;
-const addSignalButton = formElement.querySelector(
-  '.form__add-signal'
-) as HTMLButtonElement;
-const menuList = formElement.querySelector(
-  '.malfunctions__list'
-) as HTMLUListElement;
-const menuItems = menuList.querySelectorAll('.malfunctions__item');
+import {
+  imageElement,
+  description,
+  formElement,
+  lists,
+  submitList,
+  addSignalButton,
+  menuList,
+  menuItems,
+} from '../utils/constants';
 
 images.forEach((image) => {
   const malfunction = new Malfunction(

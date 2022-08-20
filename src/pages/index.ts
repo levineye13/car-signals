@@ -1,5 +1,5 @@
 import './index.scss';
-import { images } from '../images';
+import { images } from './../images';
 
 const page = document.querySelector('.page') as HTMLDivElement;
 const imageElement = page.querySelector(
@@ -44,13 +44,13 @@ images.forEach((image) => {
   const figureElement = createMalfunctionElement(
     template,
     image.src,
-    image.text
+    image.description
   );
 
   figureElement.addEventListener('click', (): void => {
     imageElement.src = image.src;
-    imageElement.alt = image.text;
-    description.textContent = image.text;
+    imageElement.alt = image.description;
+    description.textContent = image.description;
   });
 
   const item = document.createElement('li');
@@ -84,6 +84,12 @@ formElement.addEventListener('submit', (e: Event) => {
 
 menuItems.forEach((item: Element) => {
   item.addEventListener('click', () => {
+    menuItems.forEach((subitem) => {
+      if (item !== subitem) {
+        subitem.classList.remove('malfunctions__item_active');
+      }
+    });
+
     item.classList.toggle('malfunctions__item_active');
 
     if (item.classList.contains('malfunctions__item_active')) {

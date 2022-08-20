@@ -83,10 +83,12 @@
         top: 0;
         left: 100%;
         border-radius: 0 4px 4px 4px;
+        z-index: 10;
 
         @media screen and (max-width: 720px) {
           top: 100%;
           left: 0;
+          background-color: rgba($color: #000, $alpha: 1);
         }
 
         & > li {
@@ -106,6 +108,10 @@
     }
   }
 
+  & > .malfunctions__list_active {
+    visibility: visible;
+  }
+
   & .malfunctions__item_active > ul {
     visibility: visible;
   }
@@ -117,17 +123,12 @@
       & > ul {
         color: #fff;
         opacity: 1;
-        z-index: 10;
       }
 
       &:hover {
         color: rgba($color: #fff, $alpha: 0.6);
 
         & > ul {
-          @media screen and (max-width: 720px) {
-            background-color: rgba($color: #000, $alpha: 1);
-          }
-
           & > li:hover {
             color: rgba($color: #fff, $alpha: 0.6);
           }

@@ -1,12 +1,12 @@
 {
   "name": "car-signals",
   "version": "1.0.0",
-  "description": "",
+  "description": "Сигналы на приборной панели автомобиля",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
     "type": "git",

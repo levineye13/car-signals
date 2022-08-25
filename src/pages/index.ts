@@ -10,7 +10,12 @@ import {
   addSignalButton,
   menuList,
   menuItems,
+  loaderElement,
+  responceElement,
 } from '../utils/constants';
+import { sendData } from '../utils/api';
+
+const malfunctions: Array<{ src: string; description: string }> = [];
 
 images.forEach((image) => {
   const malfunction = new Malfunction(
@@ -34,6 +39,8 @@ images.forEach((image) => {
 });
 
 addSignalButton.addEventListener('click', () => {
+  malfunctions.push({ src: imageElement.src, description: imageElement.alt });
+
   const malfunction = new Malfunction(
     '#template',
     imageElement.src,
@@ -52,10 +59,34 @@ addSignalButton.addEventListener('click', () => {
   description.textContent = '';
 });
 
-formElement.addEventListener('submit', (e: Event) => {
+formElement.addEventListener('submit', async (e: Event) => {
   e.preventDefault();
+  loaderElement.classList.add('loader_active');
+  responceElement.classList.add('malfunctions__responce_active');
+
+  const timerPromise = new Promise<NodeJS.Timeout>((resolve) => {
+    const timerId: NodeJS.Timeout = setTimeout(() => {
+      responceElement.classList.remove('malfunctions__responce_active');
+
+      resolve(timerId);
+    }, 10000);
+  });
+
+  try {
+    await sendData(malfunctions);
+    responceElement.textContent = 'Данные успешно отправлены';
+  } catch (e) {
+    responceElement.textContent = 'Ошибка отпраки данных';
+    console.error(e);
+  }
 
   submitList.innerHTML = '';
+  loaderElement.classList.remove('loader_active');
+  timerPromise
+    .then((timerId: NodeJS.Timeout) => {
+      clearTimeout(timerId);
+    })
+    .catch((e) => console.error(e));
 });
 
 menuItems.forEach((item: Element) => {

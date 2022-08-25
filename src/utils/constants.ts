@@ -22,7 +22,13 @@ export const menuList = formElement.querySelector(
   '.malfunctions__list'
 ) as HTMLUListElement;
 
+export const responceElement = formElement.querySelector(
+  '.malfunctions__responce'
+) as HTMLParagraphElement;
+
 export const menuItems = menuList.querySelectorAll('.malfunctions__item');
+
+export const loaderElement = page.querySelector('.loader') as HTMLDivElement;
 
 export enum Colors {
   Green = 'green',

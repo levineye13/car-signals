@@ -27,6 +27,18 @@
     font-size: 18px;
   }
 
+  &__responce {
+    @include set-font(18px);
+    display: none;
+    color: #000;
+    margin: 20px 0 0;
+    text-align: start;
+
+    &_active {
+      display: block;
+    }
+  }
+
   & ul {
     box-sizing: border-box;
     @include reset-list;

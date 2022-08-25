@@ -8,6 +8,7 @@ import {
   lists,
   submitList,
   addSignalButton,
+  submitButton,
   menuList,
   menuItems,
   loaderElement,
@@ -16,6 +17,16 @@ import {
 import { sendData } from '../utils/api';
 
 const malfunctions: Array<{ src: string; description: string }> = [];
+
+const checkStateSubmitButton = (): void => {
+  if (malfunctions.length === 0) {
+    submitButton.disabled = true;
+  } else {
+    submitButton.disabled = false;
+  }
+};
+
+checkStateSubmitButton();
 
 images.forEach((image) => {
   const malfunction = new Malfunction(
@@ -53,6 +64,7 @@ addSignalButton.addEventListener('click', () => {
   item.className = 'page__item';
   item.append(malfunctionElement);
 
+  checkStateSubmitButton();
   submitList.insertAdjacentElement('beforeend', item);
   imageElement.src = '';
   imageElement.alt = '';
@@ -75,12 +87,14 @@ formElement.addEventListener('submit', async (e: Event) => {
   try {
     await sendData(malfunctions);
     responceElement.textContent = 'Данные успешно отправлены';
+    malfunctions.length = 0;
+    checkStateSubmitButton();
+    submitList.innerHTML = '';
   } catch (e) {
     responceElement.textContent = 'Ошибка отпраки данных';
     console.error(e);
   }
 
-  submitList.innerHTML = '';
   loaderElement.classList.remove('loader_active');
   timerPromise
     .then((timerId: NodeJS.Timeout) => {

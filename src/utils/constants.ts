@@ -18,6 +18,10 @@ export const addSignalButton = formElement.querySelector(
   '.form__add-signal'
 ) as HTMLButtonElement;
 
+export const submitButton = formElement.querySelector(
+  '.form__submit'
+) as HTMLButtonElement;
+
 export const menuList = formElement.querySelector(
   '.malfunctions__list'
 ) as HTMLUListElement;
